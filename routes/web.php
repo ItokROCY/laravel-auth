@@ -22,6 +22,7 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/login',[UserController::class, 'login'])->name('login');
 });
 
+<<<<<<< HEAD
 Route::middleware(['auth'])->group(function(){
 
 	Route::get('/logout',[UserController::class, 'logout'])->name('logout');
@@ -30,3 +31,6 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/admin/user',[HalamanUserController::class, 'index'])->name('user')->middleware('HakAkses:user');
 });
+=======
+Route::view('/auth','auth.login');
+>>>>>>> c678709d2e6c6582435fe1f7c5bb17da9b39a118
