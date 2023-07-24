@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Log In | UBold - Responsive Admin Dashboard Template</title>
+        <title>Log In</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -31,35 +31,35 @@
                         <div class="card bg-pattern">
 
                             <div class="card-body p-4">
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach($errors->all() as $item)
+                                                <li>{{$item}}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 
                                 <div class="text-center w-75 m-auto">
                                     <div class="auth-logo">
-                                        <a href="index.html" class="logo logo-dark text-center">
-                                            <span class="logo-lg">
-                                                <img src="{{asset('../assets/images/logo-dark.png')}}" alt="" height="22">
-                                            </span>
-                                        </a>
-                    
-                                        <a href="index.html" class="logo logo-light text-center">
-                                            <span class="logo-lg">
-                                                <img src="{{asset('../assets/images/logo-light.png')}}" alt="" height="22">
-                                            </span>
-                                        </a>
+                                        
                                     </div>
                                     <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
                                 </div>
 
-                                <form action="#">
+                                <form action="{{route('login')}}" method="POST">
+                                @csrf
 
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                        <input class="form-control" type="email" id="emailaddress" value="{{ old('email') }}" name="email" required="" placeholder="Enter your email">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
